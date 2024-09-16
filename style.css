@@ -1,0 +1,160 @@
+*,*::before,*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', 'sans-serif';
+}
+
+.wrapper {
+    width: 100vw;
+    height: 100vh;
+    background: #4568DC;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #B06AB3, #4568DC);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #B06AB3, #4568DC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-size: cover;
+    background-position: center;
+    display: grid;
+    place-items: center;
+    position: relative;
+}
+
+.game-info {
+    color: white;
+    position: absolute;
+    top: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    padding: 0.5rem 3rem;
+}
+
+.tic-tac-toe {
+    width: 90%;
+    max-width: 20rem;
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    aspect-ratio: 1/1;
+    position: relative;
+}
+
+.box {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1/1;
+    cursor: pointer;
+    font-size: 3rem;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box1, .box2, .box4, .box5 {
+    border-right: 2px solid white;
+    border-bottom: 2px solid white;
+}
+
+.box3, .box6 {
+    border-bottom: 2px solid white;
+}
+
+.box7, .box8 {
+    border-right: 2px solid white;
+}
+
+.btn {
+    color: white;
+    position: absolute;
+    bottom: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    padding: 0.5rem 2rem;
+    cursor: pointer;
+    display: none;
+}
+
+.btn.active {
+    display: flex;
+}
+
+/* Winning Line Styles */
+.line {
+    position: absolute;
+    background-color: white;
+    height: 5px;
+    transition: all 0.5s ease;
+    z-index: 1;
+}
+
+.horizontal-line {
+    width: 100%;
+}
+
+.vertical-line {
+    width: 5px;
+    height: 100%;
+    top: 0;
+}
+
+.diagonal-line-left {
+    width: 141%;  /* Adjusted width */
+    height: 5px;
+    top: -1%;
+    left: 0;
+    transform-origin: 0 0;  /* Rotate from top-left */
+    transform: rotate(45deg);  /* 45-degree rotation */
+    z-index: 2;  /* Ensure line is on top */
+}
+
+.diagonal-line-right {
+    width: 140.5%;  /* Adjusted width */
+    height: 5px;
+    top: 0;
+    left: -42%;  /* Adjusted left placement */
+    transform-origin: 100% 0;  /* Rotate from top-right */
+    transform: rotate(-45deg);  /* -45-degree rotation */
+    z-index: 2;  /* Ensure line is on top */
+}
+
+.line.horizontal-line.top {
+    top: 22.5%;  /* Adjust top placement */
+}
+
+
+/* Horizontal line for middle row */
+.line.horizontal-line.middle {
+    top: 50%; /* Center */
+    transform: translateY(-50%);
+}
+
+/* Horizontal line for bottom row */
+.line.horizontal-line.bottom {
+    top: calc(100% - 24%); /* Adjusted for bottom row */
+}
+
+/* Vertical line for left column */
+.line.vertical-line.left {
+    left: 22.5%; /* Adjusted for left column */
+    top : 0;
+}
+
+/* Vertical line for middle column */
+.line.vertical-line.middle {
+    left: 50%; /* Center */
+    transform: translateX(-50%);
+}
+
+/* Vertical line for right column */
+.line.vertical-line.right {
+    left: calc(100% - 24%); /* Adjusted for right column */
+}
